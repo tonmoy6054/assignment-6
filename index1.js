@@ -109,7 +109,7 @@ modalDescription.innerText = data.description;
 const featuresIntegrations = document.getElementById("features & integrations");
 featuresIntegrations.innerHTML = `
 <p><b>Integrations</b>: ${data.integrations}</p>
-<p><b>Features</b>: ${data.features.feature_name ? data.features.feature_name : 'No Feature found'}</p>
+<p><b>Features</b>: ${data.features ? data.features : 'No Feature found'}</p>
 `;
 const modalPricing = document.getElementById("modal-pricing");
 modalPricing.innerText = data.pricing;
