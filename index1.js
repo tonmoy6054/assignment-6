@@ -97,16 +97,23 @@ const loadAllData = async() => {
 
 
 const displaySingleDataDetails = data => {
-console.log(data);
+console.log(data.pricing);
 const modalTitle = document.getElementById("exampleModalLabel");
 modalTitle.innerText = data.tool_name;
 const modalDescription = document.getElementById("modal-description");
 modalDescription.innerText = data.description;
-const modalPricing = document.getElementById("modal-pricing");
-modalPricing.innerText = data.integrations;
-const modalImage = document.getElementById("modal-image");
-modalImage.innerText = data.image_link.index[1];
 
+// const modalImage = document.getElementById("modal-image");
+// modalImage.innerHTML = `<p src="https://cdn.openai.com/research-covers/gpt-3-social.jpg"></p>
+// `;
+const featuresIntegrations = document.getElementById("features & integrations");
+featuresIntegrations.innerHTML = `
+<p><b>Integrations</b>: ${data.integrations}</p>
+<p><b>Features</b>: ${data.features.feature_name ? data.features.feature_name : 'No Feature found'}</p>
+`;
+const modalPricing = document.getElementById("modal-pricing");
+modalPricing.innerText = data.pricing;
+// console.log(data.features.feature_name);
 };
 loadSingleData();
 
