@@ -85,6 +85,7 @@ const loadAllData = async() => {
     
     showFinalData();
   });
+  
   const loadSingleData = async id => {
     const URL = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     // console.log(URL);
@@ -94,7 +95,9 @@ const loadAllData = async() => {
       
       };
 
-
+     
+      
+    
 
 const displaySingleDataDetails = data => {
 console.log(data.pricing);
@@ -103,20 +106,33 @@ modalTitle.innerText = data.tool_name;
 const modalDescription = document.getElementById("modal-description");
 modalDescription.innerText = data.description;
 
-// const modalImage = document.getElementById("modal-image");
-// modalImage.innerHTML = `<p src="https://cdn.openai.com/research-covers/gpt-3-social.jpg"></p>
-// `;
 const featuresIntegrations = document.getElementById("features & integrations");
 featuresIntegrations.innerHTML = `
 <p><b>Integrations</b>: ${data.integrations}</p>
 <p><b>Features</b>: ${data.features ? data.features : 'No Feature found'}</p>
+
+
 `;
 const modalPricing = document.getElementById("modal-pricing");
 modalPricing.innerText = data.pricing;
+
 // console.log(data.features.feature_name);
+
 };
+
 loadSingleData();
 
+let dev = [
+  {plan: 'Basic', price: '$10/month'},
+  
+  {plan: 'Pro', price: '$50/month'},
+  
+  {plan: 'Enterprise', price: 'Contact us for pricing'},
+  ];
+  let toStr = dev.map(function(data){
+  return `${data.plan} ${data.price}`;
+  });
+  console.log(toStr);
 
 
 
@@ -164,7 +180,10 @@ loadSingleData();
 // fetch(URL).then((res) => res.json()).then((data) => singleDataDetailsModal(data));
 
 //   };
-
- 
+// "use strict";
+// let pricing =[];
+// fetch('https://openapi.programming-hero.com/api/ai/tool/${id}')
+// .then(response => response.json())
+// .then(json => pricing = json.map(obj => obj.pricing));
 
  
