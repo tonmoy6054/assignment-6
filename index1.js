@@ -87,11 +87,12 @@ const loadAllData = async() => {
   });
   
   const loadSingleData = async id => {
+    
     const URL = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     // console.log(URL);
       const res = await fetch(URL);
       const data = await res.json();
-      displaySingleDataDetails(data.data);
+      displaySingleDataDetails(data);
       
       };
 
@@ -99,22 +100,52 @@ const loadAllData = async() => {
       
     
 
-const displaySingleDataDetails = data => {
-console.log(data.pricing);
+      function displaySingleDataDetails(data) {
+// console.log(data.data.pricing);
+
+
+
+
 const modalTitle = document.getElementById("exampleModalLabel");
-modalTitle.innerText = data.tool_name;
+// modalTitle.innerText = data.features;
 const modalDescription = document.getElementById("modal-description");
-modalDescription.innerText = data.description;
+modalDescription.innerText = data.data.description;
+// const featuresIntegrations = document.getElementById("modal-pricing");
+// featuresIntegrations.innerText = data.pricing;
+// console.log(data);
+const modalPricing = document.getElementById('modal-pricing');
+
+for(const user of data.data.pricing){
+  // console.log(user.price);
+  const li = document.createElement('li');
+  li.innerText = user.price;
+  
+  modalPricing.appendChild(li);
+  
+ 
+}
+const modalImg = document.getElementById('modal-img');
+for(const user of data.data.logo){
+  console.log(user.logo);
+  const liOne = document.createElement('li');
+  liOne.innerText = user;
+  
+  modalPricing.appendChild(li);
+  
+ 
+}
+
 
 const featuresIntegrations = document.getElementById("features & integrations");
 featuresIntegrations.innerHTML = `
-<p><b>Integrations</b>: ${data.integrations}</p>
-<p><b>Features</b>: ${data.features ? data.features : 'No Feature found'}</p>
+ <p><b>Integrations</b>: ${data.data.integrations}</p>
+ <p><b>Features</b>: ${data.data.features}</p>
+
 
 
 `;
-const modalPricing = document.getElementById("modal-pricing");
-modalPricing.innerText = data.pricing;
+// const modalPricing = document.getElementById("modal-pricing");
+// modalPricing.innerText = toStr.plan;
 
 // console.log(data.features.feature_name);
 
@@ -122,17 +153,19 @@ modalPricing.innerText = data.pricing;
 
 loadSingleData();
 
-let dev = [
-  {plan: 'Basic', price: '$10/month'},
+// let dev = [
+//   {plan: 'Basic', price: '$10/month'},
   
-  {plan: 'Pro', price: '$50/month'},
+//   {plan: 'Pro', price: '$50/month'},
   
-  {plan: 'Enterprise', price: 'Contact us for pricing'},
-  ];
-  let toStr = dev.map(function(data){
-  return `${data.plan} ${data.price}`;
-  });
-  console.log(toStr);
+//   {plan: 'Enterprise', price: 'Contact us for pricing'},
+//   ];
+//   let toStr = dev.map(function(loadSingleData){
+//   return `${loadSingleData.plan} ${loadSingleData.price}`;
+//   });
+//   toStr = toStr.join(", ")
+  // console.log(toStr);
+  // console.log(typeof toStr);
 
 
 
