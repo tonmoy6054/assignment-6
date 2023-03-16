@@ -56,7 +56,7 @@ const loadAllData = async() => {
       const showAllFinalData = (data) => {
         const mideaAllContainer = document.getElementById("mideaAllContainer");
         data.tools.forEach(element => {
-          // console.log(element.id);
+          // console.log(element.published_in);
           const mideaAllDiv = document.createElement('div');
           mideaAllDiv.classList.add('col');
           mideaAllDiv.innerHTML = `
