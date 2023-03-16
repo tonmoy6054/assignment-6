@@ -101,45 +101,51 @@ const loadAllData = async() => {
     
 
       function displaySingleDataDetails(data) {
-// console.log(data.data.pricing);
+// console.log(data.data.accuracy.score);
 
-
-
-
-const modalTitle = document.getElementById("exampleModalLabel");
-// modalTitle.innerText = data.features;
 const modalDescription = document.getElementById("modal-description");
 modalDescription.innerText = data.data.description;
-// const featuresIntegrations = document.getElementById("modal-pricing");
-// featuresIntegrations.innerText = data.pricing;
+const modalAccuracy = document.getElementById('accuracy-rate');
+modalAccuracy.innerText = data.data.accuracy.score;
 // console.log(data);
 const modalPricing = document.getElementById('modal-pricing');
 
 for(const user of data.data.pricing){
-  // console.log(user.price);
-  const li = document.createElement('li');
-  li.innerText = user.price;
+  console.log(user.price);
+  // const li = document.createElement('li');
+  // li.innerText = user.price;
   
-  modalPricing.appendChild(li);
+  // modalPricing.appendChild(li);
+  
+ modalPricing.innerHTML = `
+ <b>Pricing</b>: ${user.price ? user.price : 'Free of cost'}
+ 
+ `;
+}
+const modalFeatures = document.getElementById('modal-features');
+// for (const user of data.data.features){
+  // const li = document.createElement('li');
+  // li.innerText = data.feature_name;
+  // modalFeatures.appendChild(li);
+// }
+modalFeatures.innerText = data.data.features.feature_name;
+
+// const modalImg = document.getElementById('modal-img');
+// for(const user of data.data.image_link){
+//   console.log(user);
+//   const img = document.createElement('img');
+//   img.innerText = user;
+  
+//   modalImg.appendChild(img);
   
  
-}
-const modalImg = document.getElementById('modal-img');
-for(const user of data.data.logo){
-  console.log(user.logo);
-  const liOne = document.createElement('li');
-  liOne.innerText = user;
-  
-  modalPricing.appendChild(li);
-  
- 
-}
+// }
 
 
 const featuresIntegrations = document.getElementById("features & integrations");
 featuresIntegrations.innerHTML = `
  <p><b>Integrations</b>: ${data.data.integrations}</p>
- <p><b>Features</b>: ${data.data.features}</p>
+  
 
 
 
