@@ -101,34 +101,40 @@ const loadAllData = async() => {
     
 
       function displaySingleDataDetails(data) {
-// console.log(data.data.accuracy.score);
+console.log(data.data.features);
+
+
+
 
 const modalDescription = document.getElementById("modal-description");
 modalDescription.innerText = data.data.description;
 const modalAccuracy = document.getElementById('accuracy-rate');
-modalAccuracy.innerText = data.data.accuracy.score;
+modalAccuracy.innerText =  data.data.accuracy.score;
 // console.log(data);
 const modalPricing = document.getElementById('modal-pricing');
 
+
 for(const user of data.data.pricing){
-  console.log(user.price);
-  // const li = document.createElement('li');
-  // li.innerText = user.price;
+  // console.log(user.price);
+  const li = document.createElement('li');
   
-  // modalPricing.appendChild(li);
+  li.innerText = user.price;
   
- modalPricing.innerHTML = `
- <b>Pricing</b>: ${user.price ? user.price : 'Free of cost'}
- 
- `;
+  modalPricing.appendChild(li);
+
 }
 const modalFeatures = document.getElementById('modal-features');
-// for (const user of data.data.features){
-  // const li = document.createElement('li');
-  // li.innerText = data.feature_name;
-  // modalFeatures.appendChild(li);
+modalFeatures.innerHTML = `
+<p><b>Featuress</b>: ${data.data.features.feature_name}</p>
+`;
+// for (const user of data.features){
+//   console.log(user);
+//   const li = document.createElement('li');
+//   li.innerText = data.data.features.feature_name;
+//   modalFeatures.appendChild(li);
+
+// modalFeatures.innerText = data.data.features.feature_name;
 // }
-modalFeatures.innerText = data.data.features.feature_name;
 
 // const modalImg = document.getElementById('modal-img');
 // for(const user of data.data.image_link){
@@ -145,10 +151,6 @@ modalFeatures.innerText = data.data.features.feature_name;
 const featuresIntegrations = document.getElementById("features & integrations");
 featuresIntegrations.innerHTML = `
  <p><b>Integrations</b>: ${data.data.integrations}</p>
-  
-
-
-
 `;
 // const modalPricing = document.getElementById("modal-pricing");
 // modalPricing.innerText = toStr.plan;
